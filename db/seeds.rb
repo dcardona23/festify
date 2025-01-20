@@ -10,7 +10,6 @@ require 'faker'
 #   end
 
 ScheduleShow.destroy_all
-ScheduleAttendee.destroy_all
 Show.destroy_all
 Schedule.destroy_all
 Attendee.destroy_all
@@ -39,11 +38,22 @@ def generate_show_times(date)
   [start_time, end_time]
 end
 
+10.times do
+  name = "#{adjectives.sample} #{themes.sample}"
+  description = "Experience the best of #{genres.sample} with unforgettable performances."
+
+  Schedule.find_or_create_by(
+    name: name,
+    description: description
+  )
+end
+
 100.times do
   Attendee.find_or_create_by(
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
-    email: Faker::Internet.unique.email
+    email: Faker::Internet.unique.email,
+    schedule_id: Schedule.all.sample.id
   )
 end
 
@@ -57,15 +67,5 @@ end
     location: locations.sample,
     start_time: start_time,
     end_time: end_time
-  )
-end
-
-10.times do
-  name = "#{adjectives.sample} #{themes.sample}"
-  description = "Experience the best of #{genres.sample} with unforgettable performances."
-
-  Schedule.find_or_create_by(
-    name: name,
-    description: description
   )
 end

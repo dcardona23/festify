@@ -26,6 +26,5 @@ RSpec.describe Show, type: :model do
   describe 'relationships' do
     it { should have_many(:schedule_shows) }
     it { should have_many(:schedules) }
-    it { should have_many(:attendees) }
   end
 end
