@@ -22,4 +22,10 @@ RSpec.describe Show, type: :model do
     it { should validate_presence_of(:start_time) }
     it { should validate_presence_of(:end_time) }
   end
+
+  describe 'relationships' do
+    it { should have_many(:schedule_shows) }
+    it { should have_many(:schedules) }
+    it { should have_many(:attendees) }
+  end
 end
