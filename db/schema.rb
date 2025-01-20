@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_20_210646) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_20_232033) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,16 +20,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_20_210646) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "schedule_id"
     t.index ["email"], name: "index_attendees_on_email", unique: true
-  end
-
-  create_table "schedule_attendees", force: :cascade do |t|
-    t.bigint "schedule_id", null: false
-    t.bigint "attendee_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["attendee_id"], name: "index_schedule_attendees_on_attendee_id"
-    t.index ["schedule_id"], name: "index_schedule_attendees_on_schedule_id"
+    t.index ["schedule_id"], name: "index_attendees_on_schedule_id"
   end
 
   create_table "schedule_shows", force: :cascade do |t|
@@ -58,8 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_20_210646) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "schedule_attendees", "attendees"
-  add_foreign_key "schedule_attendees", "schedules"
+  add_foreign_key "attendees", "schedules"
   add_foreign_key "schedule_shows", "schedules"
   add_foreign_key "schedule_shows", "shows"
 end

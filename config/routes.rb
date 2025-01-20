@@ -7,4 +7,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+#   namespace :api do
+#     namespace :v1 do
+#       resources :schedules, only: [:index] do
+#         resources :attendees, only [:index]
+#       end
+#       resources :attendees do
+#         resources :schedules, only: [:index]
+#       end
+#     end
+#   end
 end

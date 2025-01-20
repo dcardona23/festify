@@ -1,10 +1,13 @@
 require 'rails_helper'
 
+schedule = Schedule.create(name: "Cool Jams", description: "Come listen to some cool jams")
+
 FactoryBot.define do
   factory :attendee do
     first_name { 'Susie' }
     last_name { 'Jackson' }
     email { Faker::Internet.unique.email }
+    schedule_id { schedule.id }
   end
 end
 
@@ -26,8 +29,6 @@ RSpec.describe Attendee, type: :model do
   end
 
   describe 'relationships' do
-    it { should have_many(:schedule_attendees) }
-    it { should have_many(:schedules) }
-    it { should have_many(:shows) }
+    it { should belong_to(:schedule) }
   end
 end
