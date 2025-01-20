@@ -24,4 +24,10 @@ RSpec.describe Attendee, type: :model do
       expect(attendee2.save).to be false
     end
   end
+
+  describe 'relationships' do
+    it { should have_many(:schedule_attendees) }
+    it { should have_many(:schedules) }
+    it { should have_many(:shows) }
+  end
 end
