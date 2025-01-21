@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :schedules, only: [:index] do
-        resources :shows, only: [:destroy]
+        resources :shows, only: [:destroy], controller: "schedule_shows"
       end
       resources :attendees, only: [:index, :show] do
         resources :schedules, only: [:index], to: "attendees#show"

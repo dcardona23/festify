@@ -14,7 +14,7 @@ class Attendee < ApplicationRecord
   end
 
   def get_schedule_attendees
-    schedule.attendees
+    schedule.attendees.where.not(id: self.id)
   end
 
 end
