@@ -10,9 +10,9 @@ require 'faker'
 #   end
 
 ScheduleShow.destroy_all
-Show.destroy_all
-Schedule.destroy_all
 Attendee.destroy_all
+Schedule.destroy_all
+Show.destroy_all
 
 festival_dates = [
   Date.new(2025, 3, 14),
@@ -68,4 +68,14 @@ end
     start_time: start_time,
     end_time: end_time
   )
+end
+
+Schedule.all.each do |schedule|
+  random_shows = Show.all.sample(rand(3..7))
+  random_shows.each do |show|
+    ScheduleShow.find_or_create_by(
+      schedule: schedule,
+      show: show
+    )
+  end
 end
