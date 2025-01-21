@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Schedule Endpoints', type: :request do
   describe 'GET all schedules' do
     it 'returns all schedules' do
+      FactoryBot.create_list(:schedule, 3)
+
       get 'http://localhost:3000/api/v1/schedules'
       schedules = JSON.parse(response.body, symbolize_names:true)
 

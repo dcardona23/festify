@@ -12,8 +12,8 @@ Rails.application.routes.draw do
       resources :schedules, only: [:index] do
         resources :shows, only: [:destroy]
       end
-      resources :attendees, only: [:show] do
-        resources :schedules, only: [:index]
+      resources :attendees, only: [:index, :show] do
+        resources :schedules, only: [:index], to: "attendees#show"
       end
     end
   end
