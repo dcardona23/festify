@@ -1,7 +1,7 @@
 class Api::V1::SchedulesController < ApplicationController
   def index
     schedules = Schedule.all
-    render json: ScheduleSerializer.new(Schedule.all)
+    render json: ScheduleSerializer.format_schedules(schedules)
   end
 
   def show
