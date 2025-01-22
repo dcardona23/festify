@@ -42,6 +42,10 @@ end
   name = "#{adjectives.sample} #{themes.sample}"
   description = "Experience the best of #{genres.sample} with unforgettable performances."
 
+  if Schedule.exists?(name: name)
+    name = "#{adjectives.sample} #{themes.sample}"
+  end
+
   Schedule.find_or_create_by(
     name: name,
     description: description
