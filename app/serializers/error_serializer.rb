@@ -1,13 +1,15 @@
 class ErrorSerializer
-  def self.format_error(error_message)
-    {
-      errors: [
-        {
-          status: error_message.status_code.to_s,
-          title: "Error",
-          detail: error_message.message
-        }
-      ]
-    }
+  include JSONAPI::Serializer
+
+  def self.format_schedule_error
+    { errors: [{ detail: "Schedule not found" }] }
+  end
+
+  def self.format_attendee_error
+    { errors: [{ detail: "Attendee not found" }] }
+  end
+
+  def self.format_show_error
+    { errors: [{ detail: "Show not found in schedule" }] }
   end
 end

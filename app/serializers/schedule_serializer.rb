@@ -36,7 +36,7 @@ class ScheduleSerializer
 
   def self.format_schedule(schedule)
     {
-      data: [
+      data: 
         {
           id: schedule.id,
           type: 'schedule',
@@ -62,7 +62,6 @@ class ScheduleSerializer
               }
             end
           }
-        ]
       }
   end
 end

@@ -15,7 +15,7 @@ class AttendeeScheduleSerializer
               schedule_description: attendee_schedule.description,
               shows: schedule_shows.map do |show|
                 {
-                  id: show.id.to_s,
+                  id: show.id,
                   artist_name: show.artist_name,
                   genre: show.genre,
                   location: show.location,
