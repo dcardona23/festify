@@ -6,6 +6,6 @@ class Api::V1::SchedulesController < ApplicationController
 
   def show
     schedule = Schedule.find_by(id: params[:id])
-    render json: ScheduleSerializer.new(schedule)
+    render json: ScheduleSerializer.format_schedule(schedule)
   end
 end
