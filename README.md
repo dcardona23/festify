@@ -139,9 +139,11 @@ Danielle Cardona - [LinkedIn](https://www.linkedin.com/in/danielle-cardona-se/),
 ```
 
 ## Goals
-- Provide a seamless administrator experience for exploring festival schedules and details.
-- Enable administrators to view artist information and show locations and times.
-- Develop a clean, professional UI for schedule and show information.
+- Store and manage schedules, shows, and attendees efficiently using a relational database.
+- Provide endpoints to retrieve detailed information about schedules, shows, and attendees dynamically.
+- Build a robust RESTful API to serve the frontend application with necessary data.
+- Ensure all endpoints are well-documented and follow industry standards.
+- Implement comprehensive error handling to provide meaningful feedback to the frontend in case of failures.
 
 ## Testing
 This project uses RSpec for testing models and controllers and SimpleCov for test coverage. 
