@@ -11,7 +11,7 @@ class Api::V1::ScheduleShowsController < ApplicationController
     schedule.shows.destroy(show)
     schedule.reload
 
-    render json: ScheduleSerializer.new(schedule), status: :ok
+    render json: ScheduleSerializer.format_schedule(schedule), status: :ok
   end
 
   private
